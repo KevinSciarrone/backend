@@ -1,0 +1,16 @@
+{
+  "name": "ecomerce",
+  "version": "1.0.0",
+  "description": "miPrimerProyectoConNode",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kevinsc",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "express": "^4.18.2",
+    "moment": "^2.30.1"
+  }
+}
