@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "miPrimerProyectoConNode",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,6 +12,8 @@
   "dependencies": {
     "colors": "^1.4.0",
     "express": "^4.18.2",
-    "moment": "^2.30.1"
+    "moment": "^2.30.1",
+    "muter": "^0.7.0",
+    "nodemon": "^3.0.3"
   }
 }
