@@ -1,9 +1,9 @@
-import { Router } from "express";
+import express from "express";
 import { ProductsManager } from "../productManager/productManager";
 
 const productManager = new ProductsManager(`./products.json`);
 
-const routerProd = Router;
+const routerProd = express.Router();
 
 routerProd.get(`/`, async (req, res) => {
   const { limit } = req.query;

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Products</title>
+</head>
+<body>
+    <h1>Real-Time Products</h1>
+    <ul id="productList">
+        {{#each products}}
+            <li>{{ this }}</li>
+        {{/each}}
+    </ul>
+
+    <form id="productForm">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName">
+        <button type="submit">Add Product</button>
+    </form>
+
+    <script>
+        const socket = new WebSocket('ws://localhost:8080');
+
+        socket.onmessage = function(event) {
+            const productList = document.getElementById('productList');
+            productList.innerHTML = ''; // Clear the current list
+
+            const products = JSON.parse(event.data);
+
+            products.forEach(product => {
+                const listItem = document.createElement('li');
+                listItem.textContent = product;
+                productList.appendChild(listItem);
+            });
+        };
+
+        const productForm = document.getElementById('productForm');
+
+        productForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const productNameInput = document.getElementById('productName');
+            const productName = productNameInput.value;
+
+            socket.send(productName);
+            productNameInput.value = ''; // Clear input field after sending
+        });
+    </script>
+</body>
+</html>
